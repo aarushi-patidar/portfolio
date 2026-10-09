@@ -1,0 +1,1422 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-burgundy: #6B1124;
+    --color-burgundy-deep: #4A0A17;
+    --color-navy: #0B192C;
+    --color-navy-light: #1E2A38;
+    --color-ivory: #FAF8F5;
+    --color-ivory-warm: #F4EFE6;
+    --color-sand: #D8C4B6;
+    --color-sand-deep: #C4A482;
+    --color-gold: #D4AF37;
+    --color-gold-bright: #F5D061;
+    --color-gold-burnished: #997B28;
+    --color-racing-red: #E10600;
+  }
+
+  body {
+    background-color: #e8e1d5;
+    background-image:
+      radial-gradient(ellipse at 18% 16%, rgba(255, 255, 255, 0.8), transparent 42%),
+      radial-gradient(ellipse at 86% 58%, rgba(202, 186, 162, 0.22), transparent 48%),
+      repeating-linear-gradient(0deg, rgba(91, 70, 47, 0.018) 0, rgba(91, 70, 47, 0.018) 1px, transparent 1px, transparent 5px);
+    background-attachment: fixed;
+    color: #0B192C;
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+  }
+
+  /* Custom selection */
+  ::selection {
+    background: #6B1124;
+    color: #FAF8F5;
+  }
+}
+
+/* Typography Helpers */
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-cormorant {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.font-racing {
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.font-tech {
+  font-family: 'Space Grotesk', monospace;
+}
+
+.font-script {
+  font-family: 'Alex Brush', cursive;
+}
+
+/* Canvas Oil Texture Overlay */
+.oil-canvas-texture {
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(250, 248, 245, 0.4) 0%, rgba(216, 196, 182, 0.25) 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+.parchment-texture {
+  background-color: transparent;
+  background-image: none;
+}
+
+/* Gilded Gold Borders */
+.gold-frame-border {
+  border: 4px solid #D4AF37;
+  box-shadow: 
+    0 0 0 2px #4A0A17,
+    0 0 0 6px #B89758,
+    0 10px 25px -5px rgba(11, 25, 44, 0.35),
+    inset 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.gold-bevel {
+  background: linear-gradient(135deg, #F5D061 0%, #D4AF37 40%, #8C6D1F 70%, #F5D061 100%);
+}
+
+.gold-text-gradient {
+  background: linear-gradient(135deg, #DFC8A4 0%, #F5D061 35%, #D4AF37 60%, #AA820A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.burgundy-text-gradient {
+  background: linear-gradient(135deg, #8B1832 0%, #6B1124 50%, #3D0713 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Checkered Flag Pattern */
+.checkered-pattern {
+  background-image: 
+    linear-gradient(45deg, #111 25%, transparent 25%), 
+    linear-gradient(-45deg, #111 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #111 75%), 
+    linear-gradient(-45deg, transparent 75%, #111 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+}
+
+.checkered-ribbon {
+  background-image: repeating-linear-gradient(
+    45deg,
+    #111,
+    #111 10px,
+    #FAF8F5 10px,
+    #FAF8F5 20px
+  );
+}
+
+.racing-curb {
+  background: repeating-linear-gradient(
+    -45deg,
+    #E10600 0,
+    #E10600 14px,
+    #FAF8F5 14px,
+    #FAF8F5 28px
+  );
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0B192C;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #6B1124 0%, #D4AF37 100%);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D4AF37;
+}
+
+/* Victorian Lace Pattern */
+.lace-border-pattern {
+  background-image: radial-gradient(#6B1124 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+/* Smooth transitions */
+* {
+  box-sizing: border-box;
+}
+
+/* Cursor hide when custom cursor active */
+@media (pointer: fine) {
+  .custom-cursor-active,
+  .custom-cursor-active * {
+    cursor: none !important;
+  }
+}
+
+/* Radial gradient utility (used for dark vignette overlay) */
+.bg-radial {
+  background: radial-gradient(ellipse at center, transparent 10%, rgba(11,25,44,0.85) 80%);
+}
+
+/* Scale-108 utility */
+.hover\:scale-108:hover {
+  transform: scale(1.08);
+}
+
+/* Aspect ratio 4:3 */
+.aspect-4\/3 {
+  aspect-ratio: 4 / 3;
+}
+
+/* Aspect ratio 16:9 */
+.aspect-16\/9 {
+  aspect-ratio: 16 / 9;
+}
+
+/* Victorian filigree corner ornament SVG bg */
+.filigree-corners {
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M2,2 Q8,8 16,2 Q8,8 2,16 Q8,8 16,16' stroke='%23D4AF37' stroke-width='0.8' fill='none' opacity='0.5'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M30,2 Q24,8 16,2 Q24,8 30,16 Q24,8 16,16' stroke='%23D4AF37' stroke-width='0.8' fill='none' opacity='0.5'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M2,30 Q8,24 16,30 Q8,24 2,16 Q8,24 16,16' stroke='%23D4AF37' stroke-width='0.8' fill='none' opacity='0.5'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M30,30 Q24,24 16,30 Q24,24 30,16 Q24,24 16,16' stroke='%23D4AF37' stroke-width='0.8' fill='none' opacity='0.5'/%3E%3C/svg%3E");
+  background-position: top left, top right, bottom left, bottom right;
+  background-repeat: no-repeat;
+}
+
+/* Line clamp utilities */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Smooth scroll behavior when Lenis is active */
+html.lenis, html.lenis body {
+  height: auto;
+}
+html.lenis {
+  scroll-behavior: auto !important;
+}
+
+/* Soft animated focus ring */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #D4AF37;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+#hero,
+#introduction,
+#about,
+#experience,
+#projects,
+#education,
+#certificates,
+#skills,
+#fun-facts,
+#written-works,
+#contact {
+  background-color: transparent;
+  background-image: none;
+}
+
+.portfolio-section {
+  min-height: 100svh;
+  padding: 5.5rem 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.feature-content {
+  width: min(100%, 1150px);
+  margin-inline: auto;
+}
+
+.section-kicker {
+  margin: 0 0 .35rem;
+  color: #6b1124;
+  font: 700 .8rem 'Rajdhani', sans-serif;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  margin: 0;
+  color: #0b192c;
+  font: 700 clamp(1.8rem, 4vw, 3.25rem) 'Cinzel', serif;
+  line-height: 1.12;
+}
+
+.section-description,
+.feature-heading > p:last-child {
+  margin: .55rem auto 0;
+  color: #604d42;
+  font: italic 1.1rem 'Cormorant Garamond', serif;
+}
+
+.feature-heading {
+  margin: 0 auto 1.1rem;
+  text-align: center;
+}
+
+.profile-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(.75rem, 2vw, 1.5rem);
+  width: min(100%, 920px);
+  margin: 0 auto;
+}
+
+.profile-detail-card,
+.certificate-empty-state {
+  padding: clamp(1rem, 2.5vw, 1.75rem);
+  border: 1px solid #b89758a3;
+  border-radius: .35rem;
+  background: #faf8f5d9;
+  box-shadow: 0 12px 30px #0b192c12;
+}
+
+.profile-detail-card h3 {
+  margin: .25rem 0 .55rem;
+  color: #0b192c;
+  font: 700 clamp(1.1rem, 2vw, 1.5rem) 'Cinzel', serif;
+}
+
+.profile-detail-card > p:not(.section-kicker) {
+  margin: 0;
+  color: #604d42;
+  font: 500 1.05rem 'Cormorant Garamond', serif;
+}
+
+.profile-detail-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: 1rem;
+  padding-top: .75rem;
+  border-top: 1px solid #b897584d;
+  color: #604d42;
+  font: 600 .85rem 'Rajdhani', sans-serif;
+}
+
+.profile-detail-meta strong {
+  color: #6b1124;
+  font-size: 1.05rem;
+}
+
+.certificate-empty-state {
+  width: min(100%, 720px);
+  margin: 0 auto;
+  color: #604d42;
+  text-align: center;
+  font: italic 1.15rem 'Cormorant Garamond', serif;
+}
+
+.skills-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.skill-card ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  margin: .85rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill-card li {
+  padding: .3rem .55rem;
+  border: 1px solid #b8975866;
+  border-radius: 999px;
+  background: #f4efe6;
+  color: #3e3440;
+  font: 600 .75rem 'Rajdhani', sans-serif;
+}
+
+.track-frame {
+  width: min(100%, 1120px);
+  height: min(59svh, 590px);
+  min-height: 250px;
+  margin-inline: auto;
+  overflow: hidden;
+  border: 8px solid #a78a5a;
+  border-radius: 8px;
+  background: #17253a;
+  box-shadow: 0 18px 45px #0b192c35, inset 0 0 0 2px #d4af37;
+}
+
+.track-frame svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.track-infield-title {
+  fill: #f4efe6;
+  font: 700 22px 'Cinzel', serif;
+  letter-spacing: 4px;
+}
+
+.track-infield-note,
+.track-label {
+  fill: #dfc88f;
+  font: 700 13px 'Rajdhani', sans-serif;
+  letter-spacing: 2px;
+}
+
+.track-marker {
+  cursor: pointer;
+  outline: none;
+}
+
+.track-marker-label {
+  fill: #f6f2e9;
+  stroke: #d4af37;
+  stroke-width: 2;
+}
+
+.track-marker-text {
+  fill: #0b192c;
+  font: 700 14px 'Rajdhani', sans-serif;
+  pointer-events: none;
+}
+
+.track-marker:focus-visible circle,
+.hobby-car:focus-visible > ellipse:first-child {
+  stroke: #f5d061;
+  stroke-width: 5px;
+}
+
+.track-car {
+  pointer-events: none;
+  filter: drop-shadow(0 2px 3px #0009);
+}
+
+.hobby-car {
+  cursor: pointer;
+  outline: none;
+  transition: filter .2s ease;
+}
+
+.hobby-car:hover {
+  filter: drop-shadow(0 0 8px #f5d061);
+}
+
+.hobby-car-number {
+  fill: white;
+  font: 700 8px 'Rajdhani', sans-serif;
+  pointer-events: none;
+}
+
+.hobby-car-label {
+  fill: #fff;
+  font: 700 13px 'Rajdhani', sans-serif;
+  pointer-events: none;
+}
+
+.about-layout {
+  width: min(100%, 1200px);
+  min-height: min(78svh, 700px);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(.45rem, 1.5svh, 1rem);
+}
+
+.about-heading {
+  text-align: center;
+}
+
+.about-heading > p {
+  max-width: 900px;
+  margin: .45rem auto 0;
+  color: #403b37;
+  font: clamp(.95rem, 1.5vw, 1.12rem)/1.35 'Cormorant Garamond', serif;
+}
+
+.about-orbit {
+  width: 100%;
+  height: min(54svh, 440px);
+  min-height: 300px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(270px, .95fr) minmax(0, 1fr);
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  grid-template-areas: "s1 driver s3" "s2 driver s4";
+  align-items: center;
+  gap: clamp(.5rem, 2vw, 1.25rem);
+}
+
+.about-service {
+  display: flex;
+  align-items: flex-start;
+  gap: .65rem;
+  min-width: 0;
+  padding: clamp(.6rem, 1.4vw, 1rem);
+  border: 1px solid #d4af3766;
+  background: #fffdf8c9;
+  box-shadow: 0 8px 20px #0b192c12;
+}
+
+.about-service-1 { grid-area: s1; }
+.about-service-2 { grid-area: s2; }
+.about-service-3 { grid-area: s3; }
+.about-service-4 { grid-area: s4; }
+
+.about-service > span {
+  color: #8b1832;
+  font: 700 .8rem 'Rajdhani', sans-serif;
+}
+
+.about-service h3 {
+  margin: 0 0 .2rem;
+  color: #0b192c;
+  font: 700 clamp(.7rem, 1vw, .86rem)/1.2 'Cinzel', serif;
+}
+
+.about-service p {
+  margin: 0;
+  color: #554a42;
+  font: clamp(.82rem, 1.1vw, .98rem)/1.25 'Cormorant Garamond', serif;
+}
+
+.driver-stage {
+  grid-area: driver;
+  align-self: stretch;
+  min-width: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.driver-stage-frame {
+  height: min(49svh, 410px);
+  min-height: 270px;
+  padding: .4rem;
+  overflow: hidden;
+  border: 3px solid #a78a5a;
+  border-radius: 48% 48% 12px 12px;
+  background: radial-gradient(ellipse at 50% 36%, #fffdf7 0, #f1eadc 65%, #dfd2bc 100%);
+  box-shadow: inset 0 0 0 3px #d4af3799, 0 18px 35px #0b192c25;
+}
+
+.driver-stage figcaption {
+  margin: .35rem 0 0;
+  color: #655548;
+  font: italic .82rem 'Cormorant Garamond', serif;
+}
+
+.driver-3d {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none;
+  background: radial-gradient(ellipse at 50% 42%, #ffffffb8 0%, #eee5d500 68%);
+}
+
+.driver-3d:active {
+  cursor: grabbing;
+}
+
+.driver-3d canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.driver-3d-loading {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, #8d1c3726, transparent 68%);
+}
+
+.bookshelf {
+  height: min(62svh, 550px);
+  min-height: 330px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bookshelf-tier {
+  min-height: 0;
+  flex: 1 1 0;
+}
+
+.bookshelf-books {
+  flex: 2 1 0;
+}
+
+.bookshelf-decor > button > div:first-child {
+  max-height: 8svh;
+}
+
+.bookshelf-decor > button > span {
+  max-width: 130px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.portfolio-modal {
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.portfolio-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #0b192ce8;
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  z-index: -1;
+}
+
+.portfolio-modal-card {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 940px);
+  max-height: calc(100svh - 16px);
+  overflow: hidden;
+  border: 3px solid #b89758;
+  background: #faf8f5;
+  color: #0b192c;
+  box-shadow: 0 22px 70px #0008;
+}
+
+.portfolio-modal-close {
+  position: absolute;
+  top: .55rem;
+  right: .55rem;
+  z-index: 5;
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid #6b1124;
+  border-radius: 50%;
+  background: #faf8f5;
+  color: #6b1124;
+  cursor: pointer;
+}
+
+.portfolio-modal-close svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.career-modal-card {
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+  padding: 0 clamp(.55rem, 1.5vw, 1rem);
+}
+
+.career-modal-header {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  min-height: 2.8rem;
+  padding-right: 2.4rem;
+}
+
+.career-modal-icon {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid #d4af37;
+  background: #6b1124;
+  color: #f5d061;
+}
+
+.career-modal-icon svg {
+  width: 1rem;
+}
+
+.career-modal-header > div:nth-child(2) > p {
+  margin: 0;
+  color: #6b1124;
+  font: 700 .65rem 'Rajdhani', sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.career-modal-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+  margin-top: .1rem;
+  color: #394456;
+  font: .68rem 'Rajdhani', sans-serif;
+}
+
+.career-modal-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: .2rem;
+}
+
+.career-modal-meta svg {
+  width: .75rem;
+  height: .75rem;
+  color: #6b1124;
+}
+
+.career-modal-title {
+  border-bottom: 1px solid #d4af3766;
+  padding: .1rem 2rem .4rem 0;
+}
+
+.career-modal-title h2 {
+  margin: 0;
+  color: #0b192c;
+  font: 700 clamp(1.05rem, 2vw, 1.55rem)/1.12 'Cinzel', serif;
+}
+
+.career-modal-title > p:nth-child(2) {
+  margin: .1rem 0 0;
+  color: #6b1124;
+  font: 600 .78rem 'Playfair Display', serif;
+}
+
+.career-modal-summary {
+  margin: .25rem 0 0;
+  color: #50473e;
+  font: .82rem/1.3 'Cormorant Garamond', serif;
+}
+
+.career-progression {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.career-progression li {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: .08rem;
+  padding: .25rem .4rem;
+  border-left: 2px solid #6b1124;
+  background: #f0eadd;
+}
+
+.career-progression strong {
+  overflow: hidden;
+  color: #0b192c;
+  font: 700 .67rem 'Rajdhani', sans-serif;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.career-progression span {
+  color: #554a42;
+  font: .63rem 'Rajdhani', sans-serif;
+}
+
+.career-modal-main {
+  display: grid;
+  min-height: 0;
+  grid-template-columns: minmax(0, 1.45fr) minmax(130px, .75fr);
+  gap: .65rem;
+  overflow: hidden;
+}
+
+.career-modal-points h3 {
+  margin: 0 0 .2rem;
+  color: #8c6d1f;
+  font: 700 .68rem 'Rajdhani', sans-serif;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.career-modal-points > p {
+  display: flex;
+  align-items: flex-start;
+  gap: .35rem;
+  margin: 0 0 .2rem;
+  color: #263244;
+  font: .76rem/1.22 'Cormorant Garamond', serif;
+}
+
+.career-modal-points svg {
+  width: .75rem;
+  height: .75rem;
+  flex: 0 0 auto;
+  margin-top: .08rem;
+  color: #167047;
+}
+
+.career-modal-aside {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: .35rem;
+}
+
+.career-modal-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .25rem;
+}
+
+.career-modal-metrics > div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: .25rem;
+  border: 1px solid #d4af3780;
+  background: #f1ecdf;
+  text-align: center;
+}
+
+.career-modal-metrics strong {
+  color: #6b1124;
+  font: 700 .9rem 'Rajdhani', sans-serif;
+}
+
+.career-modal-metrics span {
+  color: #354052;
+  font: .58rem/1.1 'Rajdhani', sans-serif;
+}
+
+.career-modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: .2rem;
+}
+
+.career-modal-tags span {
+  padding: .12rem .35rem;
+  border: 1px solid #6b112433;
+  border-radius: 999px;
+  background: #6b11240c;
+  color: #6b1124;
+  font: .62rem 'Rajdhani', sans-serif;
+}
+
+.project-modal-card {
+  height: min(82svh, 640px);
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+}
+
+.project-modal-image {
+  position: relative;
+  min-height: 0;
+  background: #0b192c;
+}
+
+.project-modal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-modal-image > span {
+  position: absolute;
+  right: .5rem;
+  bottom: .5rem;
+  padding: .2rem .45rem;
+  background: #0b192cd9;
+  color: #f5d061;
+  font: .7rem 'Rajdhani', sans-serif;
+}
+
+.project-modal-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: .4rem;
+  padding: clamp(.7rem, 2vw, 1.4rem);
+}
+
+.project-modal-kicker {
+  display: flex;
+  justify-content: space-between;
+  gap: .3rem;
+  padding-right: 2rem;
+  color: #6b1124;
+  font: 700 .65rem 'Rajdhani', sans-serif;
+  text-transform: uppercase;
+}
+
+.project-modal-copy h2 {
+  margin: 0;
+  color: #0b192c;
+  font: 700 clamp(1.05rem, 2.4vw, 1.7rem)/1.12 'Cinzel', serif;
+}
+
+.project-modal-contributor {
+  margin: -.2rem 0 0;
+  color: #6b1124;
+  font: .7rem 'Cormorant Garamond', serif;
+}
+
+.project-modal-description {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 0;
+  color: #394456;
+  font: .82rem/1.32 'Cormorant Garamond', serif;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+}
+
+.project-modal-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem;
+}
+
+.project-modal-metrics span,
+.project-modal-stack > div > span {
+  padding: .18rem .38rem;
+  border: 1px solid #d4af377a;
+  background: #f0eadd;
+  color: #354052;
+  font: .64rem 'Rajdhani', sans-serif;
+}
+
+.project-modal-stack h3 {
+  margin: 0 0 .2rem;
+  color: #8c6d1f;
+  font: 700 .66rem 'Rajdhani', sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.project-modal-stack > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .2rem;
+  max-height: 4.4rem;
+  overflow: hidden;
+}
+
+.project-modal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  margin-top: auto;
+  padding-top: .4rem;
+  border-top: 1px solid #d4af3766;
+}
+
+.project-modal-links a,
+.book-modal-page-content > a {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .4rem .55rem;
+  border: 1px solid #6b1124;
+  background: #6b1124;
+  color: #faf8f5;
+  font: 700 .68rem 'Rajdhani', sans-serif;
+  text-decoration: none;
+}
+
+.project-modal-links a:nth-child(2) {
+  background: transparent;
+  color: #0b192c;
+}
+
+.project-modal-links svg,
+.book-modal-page-content > a svg {
+  width: .8rem;
+  height: .8rem;
+}
+
+.hobby-modal-card {
+  width: min(100%, 820px);
+  height: min(78svh, 600px);
+  display: flex;
+  flex-direction: column;
+}
+
+.hobby-modal-layout {
+  display: grid;
+  flex: 1;
+  min-height: 0;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  overflow: hidden;
+}
+
+.hobby-modal-art {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+  gap: .35rem;
+  padding: .65rem;
+  background: #17253a;
+}
+
+.hobby-modal-art img {
+  display: block;
+  width: 100%;
+  max-height: 48svh;
+  aspect-ratio: 1.28;
+  object-fit: cover;
+  border: 2px solid #d4af37;
+}
+
+.hobby-image-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: .2rem;
+  color: #f5d061;
+  font: .58rem 'Rajdhani', sans-serif;
+  text-decoration: underline;
+}
+
+.hobby-image-credit svg {
+  width: .65rem;
+  height: .65rem;
+}
+
+.hobby-modal-art > p {
+  margin: 0;
+  color: #faf8f5;
+  font: 700 .7rem 'Rajdhani', sans-serif;
+}
+
+.hobby-modal-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: .35rem;
+  padding: clamp(.7rem, 2vw, 1.4rem);
+}
+
+.hobby-modal-label {
+  color: #6b1124;
+  font: 700 .65rem 'Rajdhani', sans-serif;
+  letter-spacing: .12em;
+}
+
+.hobby-modal-copy h2 {
+  margin: 0;
+  color: #0b192c;
+  font: 700 clamp(1.1rem, 2.6vw, 1.8rem)/1.12 'Cinzel', serif;
+}
+
+.hobby-modal-role {
+  margin: 0;
+  color: #6b1124;
+  font: 600 .77rem 'Playfair Display', serif;
+}
+
+.hobby-modal-description {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: .15rem 0;
+  color: #394456;
+  font: .85rem/1.35 'Cormorant Garamond', serif;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+}
+
+.hobby-modal-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .3rem;
+  margin-top: auto;
+}
+
+.hobby-modal-stats > div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: .1rem;
+  padding: .3rem;
+  border: 1px solid #d4af3780;
+  background: #f1ecdf;
+}
+
+.hobby-modal-stats span {
+  color: #4c5664;
+  font: .6rem 'Rajdhani', sans-serif;
+  text-transform: uppercase;
+}
+
+.hobby-modal-stats strong {
+  overflow: hidden;
+  color: #6b1124;
+  font: 700 .7rem/1.15 'Rajdhani', sans-serif;
+  text-overflow: ellipsis;
+}
+
+.book-modal-card {
+  width: min(100%, 920px);
+  height: min(82svh, 640px);
+}
+
+.book-modal-pages {
+  display: grid;
+  height: 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  min-height: 0;
+  overflow: hidden;
+  background: #faf8f5;
+}
+
+.book-modal-page {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: min(390px, 78svh);
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(.65rem, 2vw, 1.7rem);
+  overflow: hidden;
+  background: linear-gradient(110deg, #f4efe6, #fffdf8 52%, #f2eadb);
+}
+
+.book-modal-page + .book-modal-page {
+  border-left: 1px solid #d4af3780;
+  background: linear-gradient(250deg, #f4efe6, #fffdf8 48%, #f2eadb);
+}
+
+.book-modal-page-content {
+  min-width: 0;
+  padding: .2rem;
+}
+
+.book-modal-kicker {
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+  margin-bottom: .55rem;
+  color: #8c6d1f;
+  font: 700 .64rem 'Rajdhani', sans-serif;
+  text-transform: uppercase;
+}
+
+.book-modal-kicker svg {
+  width: .8rem;
+  height: .8rem;
+  flex: 0 0 auto;
+}
+
+.book-modal-page h2 {
+  margin: 0;
+  color: #0b192c;
+  font: 700 clamp(1.05rem, 3vw, 2rem)/1.08 'Cinzel', serif;
+  overflow-wrap: anywhere;
+}
+
+.book-modal-subtitle {
+  margin: .35rem 0 .6rem;
+  color: #6b1124;
+  font: italic 600 .78rem/1.25 'Playfair Display', serif;
+}
+
+.book-modal-meta {
+  display: grid;
+  gap: .22rem;
+  padding-block: .4rem;
+  border-block: 1px solid #d4af3766;
+  color: #394456;
+  font: .65rem 'Rajdhani', sans-serif;
+}
+
+.book-modal-page-number {
+  align-self: center;
+  color: #8c6d1f;
+  font: italic .72rem 'Cormorant Garamond', serif;
+}
+
+.book-modal-page h3 {
+  margin: 0 0 .35rem;
+  color: #8c6d1f;
+  font: 700 .7rem 'Rajdhani', sans-serif;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.book-modal-synopsis,
+.book-modal-page blockquote {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 0 0 .5rem;
+  color: #394456;
+  font: .78rem/1.3 'Cormorant Garamond', serif;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+}
+
+.book-modal-page blockquote {
+  padding: .4rem .5rem;
+  border-left: 3px solid #6b1124;
+  background: #f0eadd;
+  color: #4a0a17;
+  font-style: italic;
+  -webkit-line-clamp: 5;
+}
+
+.book-modal-page-content > a {
+  padding: .35rem .5rem;
+  font-size: .63rem;
+}
+
+@media (max-width: 760px) {
+  #hero {
+    min-height: 100svh;
+    padding: 5rem .5rem .5rem;
+    justify-content: center;
+  }
+
+  #hero .hero-badge,
+  #hero .hero-flair,
+  #hero .hero-description,
+  #hero .hero-stats,
+  #hero .hero-scroll-prompt {
+    display: none;
+  }
+
+  #hero .hero-frame-content {
+    padding: .85rem !important;
+  }
+
+  #hero .hero-title {
+    margin-bottom: .25rem;
+    font-size: clamp(2.15rem, 10vw, 2.8rem);
+    line-height: 1.1;
+  }
+
+  #hero .hero-tagline {
+    margin-top: .25rem;
+    font-size: .95rem;
+    line-height: 1.25;
+  }
+
+  #hero .hero-car-stage {
+    margin: .75rem 0;
+    padding: .55rem .75rem;
+  }
+
+  #hero .hero-actions {
+    gap: .5rem;
+    margin-top: .25rem;
+  }
+
+  #hero .hero-actions > * {
+    padding: .6rem .85rem;
+  }
+
+  .portfolio-section {
+    padding: 5rem .75rem 1rem;
+  }
+
+  .profile-details-grid,
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-layout {
+    min-height: 0;
+    gap: .6rem;
+  }
+
+  .about-heading > p {
+    margin-top: .35rem;
+    font-size: .96rem;
+  }
+
+  .about-orbit {
+    height: auto;
+    min-height: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: minmax(165px, 30svh) auto auto;
+    grid-template-areas: "driver driver" "s1 s2" "s3 s4";
+    gap: .45rem;
+  }
+
+  .about-service {
+    gap: .4rem;
+    padding: .5rem;
+    min-height: 74px;
+  }
+
+  .about-service p {
+    font-size: .8rem;
+    line-height: 1.2;
+  }
+
+  .driver-stage {
+    width: min(56vw, 250px);
+    justify-self: center;
+  }
+
+  .driver-stage-frame {
+    height: min(30svh, 220px);
+    min-height: 165px;
+  }
+
+  .driver-stage figcaption {
+    margin-top: .2rem;
+    font-size: .72rem;
+  }
+
+  .track-frame {
+    height: min(58svh, 430px);
+    min-height: 230px;
+    border-width: 5px;
+  }
+
+  .bookshelf {
+    height: min(61svh, 450px);
+    min-height: 320px;
+  }
+
+  .bookshelf-decor > button > span {
+    max-width: 78px;
+    font-size: 8px;
+  }
+
+  .bookshelf-decor > button > div:nth-child(2) {
+    max-width: 58px;
+  }
+
+  .portfolio-modal-card {
+    max-height: calc(100svh - 12px);
+  }
+
+  .career-modal-card {
+    gap: .3rem;
+    padding-inline: .45rem;
+  }
+
+  .career-modal-header {
+    min-height: 2.45rem;
+  }
+
+  .career-modal-main {
+    grid-template-columns: minmax(0, 1.3fr) minmax(104px, .7fr);
+    gap: .35rem;
+  }
+
+  .career-modal-points > p {
+    font-size: .7rem;
+    line-height: 1.16;
+  }
+
+  .career-progression {
+    gap: .2rem;
+  }
+
+  .career-progression li {
+    padding: .2rem;
+  }
+
+  .career-progression strong,
+  .career-progression span {
+    font-size: .57rem;
+  }
+
+  .project-modal-copy {
+    gap: .3rem;
+    padding: .6rem;
+  }
+
+  .project-modal-description {
+    font-size: .76rem;
+    -webkit-line-clamp: 4;
+  }
+
+  .project-modal-stack > div {
+    max-height: 3.6rem;
+  }
+
+  .hobby-modal-layout {
+    grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+  }
+
+  .hobby-modal-copy {
+    gap: .25rem;
+    padding: .6rem;
+  }
+
+  .hobby-modal-description {
+    font-size: .76rem;
+    -webkit-line-clamp: 4;
+  }
+
+  .hobby-modal-art {
+    padding: .4rem;
+  }
+
+  .hobby-modal-stats > div {
+    padding: .22rem;
+  }
+
+  .book-modal-page {
+    min-height: min(330px, 76svh);
+    padding: .55rem;
+  }
+
+  .book-modal-synopsis,
+  .book-modal-page blockquote {
+    font-size: .7rem;
+    -webkit-line-clamp: 4;
+  }
+}
+
+@media (max-height: 700px) and (min-width: 761px) {
+  .portfolio-section {
+    padding-top: 4.5rem;
+    padding-bottom: .75rem;
+  }
+
+  .about-orbit {
+    height: 46svh;
+    min-height: 260px;
+  }
+
+  .driver-stage-frame {
+    height: 41svh;
+    min-height: 230px;
+  }
+
+  .bookshelf {
+    height: 57svh;
+    min-height: 300px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .driver-3d { cursor: grab; }
+}
